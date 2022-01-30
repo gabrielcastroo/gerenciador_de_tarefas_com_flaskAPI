@@ -23,7 +23,7 @@
                 <td>
                     <a href="/delete/{{task.id}}" class="delete">Excluir</a>
                     <br>
-                    <a href="">Atualizar</a>
+                    <a href="/update/{{task.id}}">Atualizar</a>
                 </td>
             </tr>
         {% endfor %}
@@ -31,7 +31,7 @@
     </table>
 
     <form action="/" method="POST">
-        <input type="text" placeholder="Descreva aqui a sua tarefa" name="content" id="content">
+        <input type="text" placeholder="  Descreva aqui a sua tarefa" name="content" id="content">
         <input type="submit" value="Adicionar Tarefa">
     </form>
 </div>
