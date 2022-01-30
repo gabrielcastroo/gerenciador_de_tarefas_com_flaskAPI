@@ -33,10 +33,11 @@
         {% endfor %}
 
     </table>
-
+    {% endif %}
     <form action="/" method="POST">
         <input type="text" placeholder="  Descreva aqui a sua tarefa" name="content" id="content">
         <input type="submit" value="Adicionar Tarefa">
     </form>
 </div>
+
 {% endblock %}
