@@ -8,6 +8,10 @@
 <div class = "content">
     <h1>Gerenciador de Tarefas</h1>
 
+    {% if tasks|length < 1 %}
+    <h4>Não há tarefas salvas, adicione uma tarefa abaixo!</h4>
+    {% else %}
+
     <table>
 
         <tr>
