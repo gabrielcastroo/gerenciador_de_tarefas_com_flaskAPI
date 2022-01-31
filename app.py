@@ -1,27 +1,42 @@
 from flask import Flask, render_template, url_for, request,redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from send_email import send_email
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
 
 app = Flask(__name__)
-
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 
 db = SQLAlchemy(app)
+
+migrate = Migrate(app, db)
+
+manager = Manager(app)
+
+manager.add_command('db', MigrateCommand)
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    email = db.Column(db.String(200), nullable=False)
+    
 
     def __repr__(self):
         return '<Task %r>' % self.id
+
+db.create_all()
 
 @app.route('/', methods=['POST','GET'])
 def index():
 
     if request.method == 'POST':
         task_content = request.form['content']
-        new_task = Todo(content=task_content)
+        task_email = request.form['email']
+        new_task = Todo(content=task_content, email=task_email)
+        send_email(task_email,task_content)
 
         try:
             db.session.add(new_task)
@@ -51,8 +66,10 @@ def update(id):
     task = Todo.query.get_or_404(id)
 
     if request.method == 'POST':
+        old_content = task.content
         task.content = request.form['content']
-
+        new_content = f" Sua Tarefa foi atualizada:\n\n\n Tarefa anterior: {old_content}\n\n\n Tarefa após a atualização: {task.content}\n\n\n"
+        send_email(task.email,new_content)
         try:
             db.session.commit()
             return redirect('/')
@@ -63,4 +80,4 @@ def update(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
