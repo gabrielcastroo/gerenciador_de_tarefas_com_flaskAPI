@@ -53,3 +53,8 @@ O Servidor usa a porta 5000 por padrão. você pode mudar isso alterando o segui
 if __name__ == "__main__":
     app.run(debug=True, port=<porta desejada>)
 ```
+Abaixo, segue o link do projeto implantado no Heroku:
+ 
+```
+https://gerenciador-tarefas-flask.herokuapp.com/
+```
