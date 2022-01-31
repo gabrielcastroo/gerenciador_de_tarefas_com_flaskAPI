@@ -1,31 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html {
+
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    color: #FFA500;
+    color: #0071c2;
     background-color: #DDD;
+
 }
 
 h1,h4 {
+
     text-align: center;
+
 }
+
 .content {
+
     margin: 0 auto;
     margin-top: 10%;
-    width: 550px;
+    width: 580px;
     background-color: #FFF;
     padding: 50px;
     border-radius: 10px;
     border: solid 1px #DDD;
     word-wrap: anywhere;
     box-shadow: 0 0 1em #888;
+
 }
 
 th{
-    color: #D2691E;
+
+    color: #0071c2;
     font-weight: bold;
+
 }
+
 table, td, th {
+
     border: 1px solid #EEE;
     padding: 10px;
     width: 200px;
@@ -33,54 +45,76 @@ table, td, th {
 }
 
 td{
+
     color: #000;
+
 }
 
 table {
+
     border-collapse: collapse;
     width: 100%;
+
 }
 
 th {
+
     height: 30px;
+
 }
 
 td {
+
     text-align: center;
     padding: 5px;
+
 }
 
 .form {
+
     margin-top: 20px;
+
 }
 
 #content {
+
     width: 70%;
+
 }
 
 a{
+
     text-decoration: none;
     color: #111;
     font-weight: bold;
+
 }
 
 a:hover{
+
     color: #888;
+
 }
 
 .delete {
+
     color: rgb(177, 0, 0);
     font-weight: bold;
+
 }
 
 .delete:hover {
     
     color: red;
+
 }
 
 input{
+
     margin-top: 20px;
+
 }
+
 input{
 
     height: 50px;
@@ -95,23 +129,32 @@ input[type=submit] {
     height: 55px;
     margin-left: 0px;
     border: 2px solid #FFF;
-    background-color: #FFA500;
+    background-color: #0071c2;
     color: #FFF;
     font-weight: bold;
-    border-radius: 4px;
+    border-radius: 8px;
     width: 155px;
     text-align: center;
     
 }
 
 .boxes {
+
     border: solid 1px #DDD;
+
 }
 
 input[type=submit]:hover {
-    border: 2px solid #D2691E;
+
+    border: 2px solid #0071c2;
     background-color: #FFF;
-    color: #D2691E;
+    color: #0071c2;
     cursor: pointer;
 
+}
+
+#priority{
+
+    margin-top: 15px;
+    
 }

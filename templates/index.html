@@ -19,6 +19,7 @@
             <th>Adicionado em</th>
             <th>Ações</th>
             <th>E-mail</th>
+            <th>Prioridade</th>
         </tr>
         
         {% for task in tasks %}
@@ -30,16 +31,24 @@
                     <br>
                     <a href="/update/{{task.id}}">Atualizar</a>
                 </td>
-                <td>
-                    {{task.email}}
-                </td>
+                <td>{{task.email}}</td>
+                <td>{{task.priority}}</td>
             </tr>
         {% endfor %}
 
     </table>
     {% endif %}
+
     <form action="/" method="POST">
         <input type="email" placeholder="  e-mail" class="boxes" name="email" id="email">
+        
+        <label for="priority">Escolha o nível de prioridade da tarefa: </label>
+        
+        <select name="priority" id="priority">
+            <option value="Baixa">Baixa</option>
+            <option value="Media">Média</option>
+            <option value="Alta">Alta</option>
+          </select>
         <input type="text" placeholder="  Descreva aqui a sua tarefa" class="boxes" name="content" id="content">
         <input type="submit" value="Enviar">
     </form>

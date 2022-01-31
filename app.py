@@ -22,7 +22,7 @@ class Todo(db.Model):
     content = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     email = db.Column(db.String(200), nullable=False)
-    
+    priority = db.Column(db.String(50), nullable=False) 
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -33,9 +33,12 @@ db.create_all()
 def index():
 
     if request.method == 'POST':
+
         task_content = request.form['content']
         task_email = request.form['email']
-        new_task = Todo(content=task_content, email=task_email)
+        task_priority = request.form['priority']
+
+        new_task = Todo(content=task_content, email=task_email, priority=task_priority)
         send_email(task_email,task_content)
 
         try:
@@ -80,4 +83,5 @@ def update(id):
 
 
 if __name__ == "__main__":
+    app.debug = True
     app.run()

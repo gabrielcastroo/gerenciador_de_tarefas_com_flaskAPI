@@ -14,12 +14,12 @@ def send_email(email_to_send, text_to_send):
     server.starttls()
     server.login(login, password)
 
-    corpo = "Olá, você tem uma tarefa - Enviado de Gerenciador de Tarefas "
+    subject = "Olá, você tem uma tarefa - Enviado de Gerenciador de Tarefas "
 
     email_msg = MIMEMultipart()
     email_msg['From'] = login
     email_msg['To'] = email_to_send
-    email_msg['Subject'] = corpo
+    email_msg['Subject'] = subject
     email_msg.attach(MIMEText(text_to_send,'plain'))
 
     server.sendmail(email_msg['From'],email_msg['To'],email_msg.as_string())
